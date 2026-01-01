@@ -1,0 +1,192 @@
+/* 1. GLOBAL RESET & VARIABLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette - Deep Space & Engineering */
+    --primary-blue: #0b1c2c;      /* Very Dark Navy (Space) */
+    --accent-blue: #3498db;       /* Bright Blue (Thrust/Tech) */
+    --text-dark: #333333;
+    --text-light: #ffffff;
+    --light-gray: #f4f7f6;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: white;
+}
+
+/* 2. REUSABLE CLASSES */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--primary-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px solid var(--accent-blue);
+    display: inline-block;
+}
+
+.section-light { background-color: white; padding: 4rem 0; }
+.section-dark { background-color: var(--primary-blue); color: var(--text-light); padding: 4rem 0; }
+.section-dark .section-title { color: white; border-bottom-color: var(--accent-blue); }
+
+.btn-main {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--accent-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+.btn-main:hover { background: #2980b9; }
+
+.btn-small {
+    padding: 8px 20px;
+    background: var(--accent-blue);
+    color: white !important;
+    border-radius: 4px;
+}
+
+/* 3. NAVIGATION */
+nav {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+}
+
+.nav-links { list-style: none; display: flex; align-items: center; }
+.nav-links li { margin-left: 20px; }
+.nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 500; }
+.nav-links a:hover { color: var(--accent-blue); }
+
+/* 4. HERO SECTION WITH IMAGE */
+#hero {
+    /* Adjusted height to fit image */
+    padding: 100px 0; 
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #1a2a3a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* NEW: Profile Image Styling */
+.profile-frame {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 25px auto; /* Center horizontally */
+    border-radius: 50%; /* Makes it a circle */
+    border: 5px solid rgba(255,255,255,0.3); /* Semi-transparent border */
+    padding: 5px; /* Space between border and image */
+    overflow: hidden; /* Crops the image */
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the circle without stretching */
+    border-radius: 50%;
+    /* Optional: Makes the photo slightly black & white for a "modern" look. 
+       Remove the line below if you want full color. */
+    filter: grayscale(20%); 
+}
+
+.hero-content h1 { font-size: 3rem; margin-bottom: 10px; }
+.hero-content .subtitle { font-size: 1.3rem; font-weight: 300; margin-bottom: 20px; color: #aecfe8; }
+.hero-content .bio-intro { max-width: 700px; margin: 0 auto 30px auto; font-size: 1.1rem; line-height: 1.8; }
+
+/* 5. ACADEMICS & EXPERIENCE */
+.academic-entry {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-blue);
+    margin-bottom: 20px;
+}
+.academic-entry h3 { margin-bottom: 5px; }
+.meta { font-style: italic; color: #ccc; margin-bottom: 15px; font-size: 0.9rem; }
+
+/* 6. PROJECTS */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.project-card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+    height: 100%; /* Makes all cards same height */
+    display: flex;
+    flex-direction: column;
+}
+.project-card:hover { transform: translateY(-5px); border-color: var(--accent-blue); }
+
+.project-content { padding: 25px; flex-grow: 1; }
+.project-content h3 { margin-bottom: 10px; color: var(--primary-blue); }
+.tech-stack { 
+    color: var(--accent-blue); 
+    font-size: 0.85rem; 
+    font-weight: bold; 
+    margin-bottom: 15px; 
+    text-transform: uppercase; 
+}
+
+/* 7. SKILLS */
+.skills-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.skill-category {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 8px;
+}
+.skill-category h3 { border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 10px; margin-bottom: 15px; }
+.skill-category ul { list-style: none; }
+.skill-category li { margin-bottom: 8px; padding-left: 10px; border-left: 2px solid var(--accent-blue); }
+
+/* 8. FOOTER */
+footer { text-align: center; padding: 30px; background: #eee; font-size: 0.9rem; margin-top: auto; }
+.center-text { text-align: center; }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .nav-wrapper { flex-direction: column; height: auto; padding: 15px; }
+    .nav-links { margin-top: 15px; flex-direction: column; text-align: center; width: 100%; padding: 0; }
+    .nav-links li { margin: 10px 0; margin-left: 0; }
+    .hero-content h1 { font-size: 2rem; }
+}
