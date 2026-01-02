@@ -3,205 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omer Gadalla | Aerospace Engineer</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Omer Gadalla | Launch Systems Dev Engineer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js"></script>
+
+    <style>
+        :root {
+            /* --- NEW COLOR THEME --- */
+            
+            /* Deep Navy Blue (replaces black) */
+            --bg-navy: #0a1128; 
+            
+            /* Light/White Theme */
+            --bg-white: #f8fafc;
+            --text-on-white: #1e293b; /* Dark navy text for white areas */
+            --text-muted-white: #64748b; /* Muted text for white areas */
+
+            /* Dark Theme Text */
+            --text-on-dark: #ffffff;
+            --text-muted-dark: #94a3b8;
+
+            /* Accents */
+            --primary-blue: #3b82f6;
+            --glass-panel: rgba(10, 17, 40, 0.6); /* Navy glass */
+            --border-glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-navy);
+            color: var(--text-on-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- 3D BACKGROUND LAYER --- */
+        #spline-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0; /* Behind everything */
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 2rem 5%; z-index: 100;
+            display: flex; justify-content: space-between; align-items: center;
+            /* Add subtle background for readability over 3D */
+            background: linear-gradient(to bottom, rgba(10, 17, 40, 0.8), transparent);
+        }
+        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 500; opacity: 0.9; transition: 0.3s; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+        .nav-links a:hover { opacity: 1; color: var(--primary-blue); }
+
+        /* --- HERO SECTION (Dark Navy) --- */
+        header#hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            z-index: 10;
+            pointer-events: none; /* Allows clicking through to the 3D model */
+        }
+
+        .hero-content {
+            max-width: 650px;
+            pointer-events: auto; /* Re-enable clicking for buttons */
+        }
+
+        .profile-frame {
+            width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.2); margin-bottom: 2rem;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+        }
+        .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        h1 { 
+            font-size: 4.5rem; line-height: 1.05; margin-bottom: 1.5rem; font-weight: 800; 
+            letter-spacing: -2px; color: white;
+        }
+        
+        .role-tag {
+            display: inline-block; padding: 6px 12px; border: 1px solid var(--primary-blue);
+            color: var(--primary-blue); border-radius: 50px; font-size: 0.8rem; 
+            font-family: 'JetBrains Mono', monospace; margin-bottom: 1.5rem;
+            background: rgba(59, 130, 246, 0.1); backdrop-filter: blur(5px);
+        }
+
+        .bio { font-size: 1.2rem; color: var(--text-muted-dark); margin-bottom: 2.5rem; max-width: 500px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
+
+        .btn-main {
+            display: inline-block; background: white; color: var(--bg-navy);
+            padding: 1rem 2rem; text-decoration: none; font-weight: 700; border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+
+        /* --- SECTIONS COMMON --- */
+        section {
+            position: relative; z-index: 20; padding: 8rem 5%;
+        }
+
+        /* --- EXPERIENCE (WHITE SECTION) --- */
+        #experience { 
+            background-color: var(--bg-white); 
+            color: var(--text-on-white); 
+        }
+        .section-title { font-size: 3rem; margin-bottom: 4rem; font-weight: 800; color: var(--text-on-white); }
+        
+        .exp-card {
+            background: white; /* Solid white card */
+            border: 1px solid #e2e8f0;
+            padding: 2.5rem; border-radius: 16px; margin-bottom: 2rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .exp-card:hover { border-color: var(--primary-blue); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .exp-role { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .exp-company { font-family: 'JetBrains Mono', monospace; color: var(--primary-blue); font-size: 0.9rem; margin-bottom: 1.5rem; display: block; }
+        .exp-card p { color: var(--text-muted-white); }
+
+        /* --- FLAGSHIP PROJECT (NAVY SECTION) --- */
+        #featured-project { 
+            background-color: var(--bg-navy); 
+            color: var(--text-on-dark);
+            border-top: 1px solid var(--border-glass); 
+            /* Gradient fade in from the white section above */
+            background: linear-gradient(to bottom, var(--bg-navy), var(--bg-navy));
+        }
+        
+        .step-row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; margin-bottom: 8rem; }
+        .step-row.reverse { direction: rtl; } 
+        .step-row.reverse .step-content { direction: ltr; }
+
+        .step-number { color: var(--primary-blue); font-family: 'JetBrains Mono', monospace; margin-bottom: 1rem; display: block; }
+        .step-content h3 { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.1; }
+        .step-content p { color: var(--text-muted-dark); font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .tech-tag { color: #60a5fa; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; display: block; margin-top: 1rem; }
+
+        .step-img-container {
+            border-radius: 12px; overflow: hidden; border: 1px solid var(--border-glass);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5); background: #000;
+        }
+        .step-img-container img { width: 100%; height: auto; display: block; opacity: 0.9; }
+        
+        .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+        /* --- CONTACT (WHITE SECTION) --- */
+        #contact { 
+            background-color: var(--bg-white); 
+            color: var(--text-on-white);
+            text-align: center; 
+            border-top: 1px solid #e2e8f0; 
+        }
+        .contact-link { display: block; font-size: 1.5rem; color: var(--text-on-white); text-decoration: none; margin: 1rem 0; font-weight: 700; }
+        .contact-link:hover { color: var(--primary-blue); }
+
+        /* Mobile Responsive */
+        @media (max-width: 900px) {
+            h1 { font-size: 3rem; }
+            .step-row, .step-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 3rem; }
+            .step-img-container { order: 1; } .step-content { order: 2; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
 
+    <div id="spline-container">
+        <spline-viewer url="https://prod.spline.design/QGx3t4wj-IjeaKSu/scene.splinecode"></spline-viewer>
+    </div>
+
     <nav>
-        <div class="container nav-wrapper">
-            <div class="logo">Omer Gadalla</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact" class="btn-small">Contact</a></li>
-            </ul>
-        </div>
+        <div class="logo">Omer Gadalla</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#featured-project">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
     <header id="hero">
-        <div class="container hero-content">
+        <div class="hero-content">
             <div class="profile-frame">
-                <img src="profile.png" alt="Omer Gadalla" class="profile-img">
+                <img src="profile.png" alt="Omer Gadalla">
             </div>
             
-            <h1>Omer Gadalla</h1>
-            <p class="subtitle">Rocket Engines | Propulsion Analysis | Launch Systems</p>
-            
-            <p class="bio-intro">
-                Fresh Aerospace Engineering graduate from Middle East Technical University (METU). 
-                I specialize in Propellant Feed Systems, Liquid Rocket Engine design, and CFD analysis, with hands-on experience building 100N engines and high-altitude rockets.
+            <span class="role-tag">LAUNCH SYSTEMS DEVELOPMENT ENGINEER</span>
+            <h1>Propulsion & Launch Systems.</h1>
+            <p class="bio">
+                Specializing in Liquid Rocket Engines, Injector Atomization, and CFD. 
+                Designing flight hardware that survives.
             </p>
             
-            <a href="#projects" class="btn-main">View Technical Projects</a>
+            <a href="#featured-project" class="btn-main">View Flagship Project</a>
         </div>
     </header>
 
-    <section id="experience" class="section-light">
-        <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
-            
-            <div class="experience-card" style="margin-bottom: 20px;">
-                <h3>Propulsion Analysis Team Lead</h3>
-                <p class="meta">Galaxy Rocket Team (TEKNOFEST) | Feb 2025 – Present</p>
-                <p>
-                    Leading a 15-member team to design a 100N Liquid Bipropellant Rocket Engine. 
-                    Responsible for thermal and CFD analysis, validating the combustion chamber design at 3000K and 10 bar pressure.
-                </p>
-            </div>
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        
+        <div class="exp-card">
+            <div class="exp-role">Propulsion Analysis Team Lead</div>
+            <span class="exp-company">Galaxy Rocket Team (TEKNOFEST) | Feb 2025 – Present</span>
+            <p>
+                Leading the analysis of a 100N Liquid Bipropellant Engine. Validated the combustion chamber for 3000K thermal loads, ensuring material integrity for the full 10-second burn duration.
+            </p>
+        </div>
 
-            <div class="experience-card" style="margin-bottom: 20px;">
-                <h3>CFD & Structural Analysis Team Lead</h3>
-                <p class="meta">Galaxy Rocket Team (TEKNOFEST) | Feb 2025 – Present</p>
-                <p>
-                    Lead the aerodynamic and structural design of a high-altitude rocket (15,000 ft). 
-                    Executed CFD simulations to optimize drag (Mach 1.4) and performed FEA to ensure structural integrity under flight loads.
-                </p>
-            </div>
-
-            <div class="experience-card">
-                <h3>R&D Engineer Intern</h3>
-                <p class="meta">MTS Defense Company | July 2025 – Sept 2025</p>
-                <p>
-                    Designed and proposed a 20N Green Bipropellant Thruster (N2O/Propylene). 
-                    Conducted trade-off analysis achieving 50% faster response than electric thrusters and significantly higher safety than hydrazine systems.
-                </p>
-            </div>
+        <div class="exp-card">
+            <div class="exp-role">R&D Engineer Intern</div>
+            <span class="exp-company">MTS Defense Company | July 2025 – Sept 2025</span>
+            <p>
+                Designed a 20N Green Bipropellant Thruster. Conducted trade-off studies proving a 50% faster response time compared to electric propulsion systems.
+            </p>
         </div>
     </section>
 
-    <section id="projects" class="section-dark">
-        <div class="container">
-            <h2 class="section-title">Technical Projects</h2>
-            <div class="projects-grid">
-                
-                <article class="project-card">
-                    <img src="project1.png" alt="100N Rocket Engine" class="project-img">
-                    <div class="project-content">
-                        <h3>100N Liquid Bipropellant Engine</h3>
-                        <p class="tech-stack">Role: Team Lead | Tools: ANSYS Fluent, Thermal</p>
-                        <p>
-                            Designed a LOX/Jet-A1 engine for TEKNOFEST. 
-                            Conducted combustion CFD and designed the cooling system to handle a 10-second burn duration at 3000 Kelvin.
-                        </p>
-                    </div>
-                </article>
+    <section id="featured-project">
+        <div style="text-align: center; margin-bottom: 6rem;">
+            <span class="role-tag">FLAGSHIP DEVELOPMENT</span>
+            <h2 style="font-size: 3rem; font-weight: 800; margin-top: 1rem; color: white;">100N Liquid Bipropellant Engine</h2>
+        </div>
 
-                <article class="project-card">
-                    <img src="project2.png" alt="High Altitude Rocket" class="project-img">
-                    <div class="project-content">
-                        <h3>High Altitude Rocket (Mach 1.4)</h3>
-                        <p class="tech-stack">Role: CFD Lead | Tools: ANSYS Mechanical, Composites</p>
-                        <p>
-                            Designed a 2-meter rocket to reach 15,000 ft. 
-                            Selected Aluminum 7075 for the motor block and integrated composite materials (carbon/glass fiber) to optimize weight and strength.
-                        </p>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="project3.png" alt="20N Thruster" class="project-img">
-                    <div class="project-content">
-                        <h3>Sustainable 20N Thruster</h3>
-                        <p class="tech-stack">Tools: Simscape, CAD, P&ID</p>
-                        <p>
-                            Designed a cost-effective thruster for small satellites (10–100 kg). 
-                            Modeled the propulsion subsystem in Simscape and produced a 3D-printed nozzle prototype.
-                        </p>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="project4.png" alt="Nozzle CFD Analysis" class="project-img">
-                    <div class="project-content">
-                        <h3>CFD Analysis of C-D Nozzle</h3>
-                        <p class="tech-stack">Tools: ANSYS Fluent, Viscous Flow</p>
-                        <p>
-                            Built viscous compressible flow simulations with boundary-layer capturing. 
-                            Validated results within 5–10% deviation from NASA's experimental data.
-                        </p>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="project5.png" alt="MOC Nozzle Design" class="project-img">
-                    <div class="project-content">
-                        <h3>Supersonic Nozzle Design (MOC)</h3>
-                        <p class="tech-stack">Tools: MATLAB, Method of Characteristics</p>
-                        <p>
-                            Developed a MATLAB tool to generate an optimized nozzle contour for Mach 3 exit conditions. 
-                            Implemented a Prandtl-Meyer function solver for smooth expansion.
-                        </p>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <img src="project6.png" alt="Combustion Analysis" class="project-img">
-                    <div class="project-content">
-                        <h3>Combustion Equilibrium Analysis</h3>
-                        <p class="tech-stack">Tools: MATLAB, Newton-Raphson</p>
-                        <p>
-                            Created a solver to calculate equilibrium mole fractions of 6 combustion species for a Hydrogen-Oxygen engine. 
-                            Solved chemical equilibrium equations using numerical methods.
-                        </p>
-                    </div>
-                </article>
-
+        <div class="step-row">
+            <div class="step-content">
+                <span class="step-number">PHASE 01: SIMULATION</span>
+                <h3>Flow Validation.</h3>
+                <p>
+                    Before manufacturing, we had to prove the flow physics. I ran <strong>Viscous Compressible Flow</strong> simulations in ANSYS Fluent to validate our nozzle contour.
+                </p>
+                <p>
+                    The goal was to prevent flow separation at Mach 3. Results matched our Isentropic Flow calculations within 5%.
+                </p>
+                <span class="tech-tag">> ANSYS Fluent / K-Epsilon Model</span>
+            </div>
+            <div class="step-img-container">
+                <img src="nozzlecfd.png" alt="CFD Mach Contour">
             </div>
         </div>
-    </section>
 
-    <section id="skills" class="section-light">
-        <div class="container">
-            <h2 class="section-title">Skills & Certifications</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Analysis & Simulation</h3>
-                    <ul>
-                        <li>ANSYS Fluent (CFD)</li>
-                        <li>ANSYS Static Structural</li>
-                        <li>Simscape Modeling</li>
-                        <li>NASA CEA</li>
-                    </ul>
+        <div class="step-row reverse">
+            <div class="step-content">
+                <span class="step-number">PHASE 02: THERMAL STRATEGY</span>
+                <h3>Heat Sink Design.</h3>
+                <p>
+                    A 10-second burn at 3000K generates immense thermal loads. 
+                </p>
+                <p>
+                    We utilized a <strong>Heat Sink / Capacitive</strong> cooling strategy. We selected high-performance <strong>Inconel and Copper alloys</strong> capable of absorbing the thermal load for the full duration without exceeding the material's structural failure limits.
+                </p>
+                 <span class="tech-tag">> Transient Thermal Analysis / Inconel 718</span>
+            </div>
+            <div class="step-img-container">
+                <img src="thermal.png" alt="Thermal Analysis">
+            </div>
+        </div>
+
+        <div class="step-row">
+            <div class="step-content">
+                <span class="step-number">PHASE 03: ADDITIVE MANUFACTURING</span>
+                <h3>Printed for Precision.</h3>
+                <p>
+                    To achieve the complex internal geometries of the injector and cooling interfaces, we moved away from traditional CNC.
+                </p>
+                <p>
+                    The combustion chamber and injector were manufactured using <strong>Additive Manufacturing (3D Printing)</strong>. This allowed us to print the complex swirler patterns directly in Inconel.
+                </p>
+                <p style="font-size: 0.9rem; color: var(--primary-blue); margin-top: 1rem;">
+                    Propellants: Gaseous Oxygen (GOX) & Jet-A1
+                </p>
+            </div>
+            <div class="dual-grid">
+                <div class="step-img-container">
+                    <img src="rocketengine.png" alt="Engine Assembly">
                 </div>
-                <div class="skill-category">
-                    <h3>Engineering Design</h3>
-                    <ul>
-                        <li>Rocket Engine Design</li>
-                        <li>Propellant Feed Systems (P&ID)</li>
-                        <li>Composite Structures</li>
-                        <li>Bill of Materials (BOM)</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Certifications</h3>
-                    <ul>
-                        <li>MATLAB & Simscape Onramp</li>
-                        <li>Rocket Science & Engineering</li>
-                        <li>Reliability & Safety Analysis</li>
-                    </ul>
+                <div class="step-img-container">
+                    <img src="injector.png" alt="Injector Plate">
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="contact" class="section-dark">
-        <div class="container center-text">
-            <h2 class="section-title">Get In Touch</h2>
-            <p>Ready to contribute to cutting-edge launch technologies.</p>
-            <br>
-            <a href="mailto:omarnayer02@gmail.com" class="btn-main" style="background: white; color: var(--primary-blue);">Email Me</a>
-            <div style="margin-top: 20px;">
-                <p>+90 552 796 03 00</p>
+        <div class="step-row reverse">
+            <div class="step-content">
+                <span class="step-number">PHASE 04: VALIDATION</span>
+                <h3>The Spray Test.</h3>
+                <p>
+                    Before ignition, we verify fluid dynamics. We conducted a "Cold Flow" test to visualize the injector's atomization cone.
+                </p>
+                <p>
+                    This confirmed that our GOX/Fuel mixture would impinge correctly, ensuring stable combustion and preventing hard starts.
+                </p>
+            </div>
+            <div class="step-img-container">
+                <img src="spreytest.png" alt="Spray Test">
             </div>
         </div>
+
     </section>
 
-    <footer>
-        <p>&copy; 2026 Omer Gadalla. Built for the Aerospace Industry.</p>
-    </footer>
+    <section id="contact">
+        <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 800; color: var(--text-on-white);">Ready for Launch?</h2>
+        <a href="mailto:omarnayer02@gmail.com" class="contact-link">omarnayer02@gmail.com</a>
+        <a href="tel:+905527960300" class="contact-link" style="color: var(--text-muted-white); font-size: 1.2rem;">+90 552 796 03 00</a>
+    </section>
 
 </body>
 </html>
