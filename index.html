@@ -57,9 +57,9 @@
         }
         .hero-content { max-width: 650px; pointer-events: auto; }
 
-        /* PROFILE PICTURE - MADE BIGGER AS REQUESTED */
+        /* PROFILE PICTURE */
         .profile-frame {
-            width: 140px; height: 140px; /* Increased from 90px */
+            width: 140px; height: 140px; 
             border-radius: 50%; overflow: hidden;
             border: 3px solid rgba(255,255,255,0.2); margin-bottom: 2rem;
             box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
@@ -87,28 +87,80 @@
         }
         .btn-main:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
 
-        /* SECTIONS */
+        /* SECTIONS COMMON */
         section { position: relative; z-index: 20; padding: 8rem 5%; }
 
-        /* EXPERIENCE */
-        #experience { background-color: var(--bg-white); color: var(--text-on-white); }
-        .section-title { font-size: 3rem; margin-bottom: 4rem; font-weight: 800; color: var(--text-on-white); }
-        
-        .exp-card {
-            background: white; border: 1px solid #e2e8f0;
-            padding: 2.5rem; border-radius: 16px; margin-bottom: 2rem;
-            transition: 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        /* --- EXPERIENCE SECTION --- */
+        #experience { 
+            background-color: var(--bg-white); 
+            color: var(--text-on-white); 
         }
-        .exp-card:hover { border-color: var(--primary-blue); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
-        .exp-role { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .exp-company { font-family: 'JetBrains Mono', monospace; color: var(--primary-blue); font-size: 0.9rem; margin-bottom: 1.5rem; display: block; }
-        .exp-card p { color: var(--text-muted-white); }
+        .section-title { font-size: 3rem; margin-bottom: 4rem; font-weight: 800; color: var(--text-on-white); text-align: center; }
 
-        /* PROJECT SECTION */
+        .career-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 30px;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .career-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        /* The Dot */
+        .career-item::before {
+            content: '';
+            position: absolute;
+            left: -36px; /* Adjust to align with line */
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary-blue);
+        }
+
+        .career-date {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .career-role { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.2rem; line-height: 1.2; }
+        .career-company { font-size: 1.1rem; color: #475569; font-weight: 600; margin-bottom: 1rem; }
+        
+        .career-desc {
+            color: #64748b;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* CV Button Style */
+        .btn-cv {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+        .btn-cv:hover { background: var(--primary-blue); color: white; }
+
+        /* --- FLAGSHIP PROJECT --- */
         #featured-project { 
-            background-color: var(--bg-navy); color: var(--text-on-dark);
+            background-color: var(--bg-navy); 
+            color: var(--text-on-dark);
             border-top: 1px solid var(--border-glass); 
-            background: linear-gradient(to bottom, var(--bg-navy), var(--bg-navy));
         }
         
         .step-row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; margin-bottom: 8rem; }
@@ -133,7 +185,7 @@
         .contact-link { display: block; font-size: 1.5rem; color: var(--text-on-white); text-decoration: none; margin: 1rem 0; font-weight: 700; }
         .contact-link:hover { color: var(--primary-blue); }
 
-        /* MOBILE */
+        /* MOBILE GLOBAL */
         @media (max-width: 900px) {
             h1 { font-size: 3rem; }
             .step-row, .step-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 3rem; }
@@ -152,7 +204,7 @@
         <div class="logo">Omer Gadalla</div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
+            <li><a href="#experience">Career</a></li>
             <li><a href="#featured-project">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -165,9 +217,9 @@
             </div>
             
             <span class="role-tag">LAUNCH SYSTEMS DEVELOPMENT ENGINEER</span>
-            <h1>Propulsion & Launch Systems.</h1>
+            <h1>Rocket Propulsion & Launch Systems.</h1>
             <p class="bio">
-                Specializing in Liquid Rocket Engines, Injector Atomization, and CFD. 
+                Specializing in Propellant Feed System Design, Injectors Design and CFD. 
                 Designing hardware that flies.
             </p>
             
@@ -176,22 +228,50 @@
     </header>
 
     <section id="experience">
-        <h2 class="section-title">Experience</h2>
+        <h2 class="section-title">Career Path</h2>
         
-        <div class="exp-card">
-            <div class="exp-role">Propulsion Analysis Team Lead</div>
-            <span class="exp-company">Galaxy Rocket Team (TEKNOFEST) | Feb 2025 – Present</span>
-            <p>
-                Leading the analysis of a 100N Liquid Bipropellant Engine. Validated the combustion chamber for 3000K thermal loads, ensuring material integrity for the full 10-second burn duration.
-            </p>
-        </div>
+        <div class="career-timeline">
+            
+            <div class="career-item">
+                <span class="career-date">2021 – 2026</span>
+                <div class="career-role">B.S. Aerospace Engineering</div>
+                <div class="career-company">Middle East Technical University (METU)</div>
+                <p class="career-desc">
+                    Passion in Rocket Propulsion and Space Systems.
+                </p>
+            </div>
 
-        <div class="exp-card">
-            <div class="exp-role">R&D Engineer Intern</div>
-            <span class="exp-company">MTS Defense Company | July 2025 – Sept 2025</span>
-            <p>
-                Designed a 20N Green Bipropellant Thruster. Conducted trade-off studies proving a 50% faster response time compared to electric propulsion systems.
-            </p>
+            <div class="career-item">
+                <span class="career-date">FEB 2025 – PRESENT</span>
+                <div class="career-role">Propulsion Analysis Team Lead</div>
+                <div class="career-company">Galaxy Rocket Team (TEKNOFEST)</div>
+                <p class="career-desc">
+                    Led the thermal analysis and CFD validation of a 100N GOX/Jet-A1 rocket engine.
+                </p>
+            </div>
+
+            <div class="career-item">
+                <span class="career-date">FEB 2025 – PRESENT</span>
+                <div class="career-role">CFD & Structural Analysis Lead</div>
+                <div class="career-company">Galaxy Rocket Team (TEKNOFEST)</div>
+                <p class="career-desc">
+                    Optimized the design of a Mach 1.4 high-altitude (15,000 ft) rocket  .
+                </p>
+            </div>
+
+            <div class="career-item">
+                <span class="career-date">JULY 2025 – SEPT 2025</span>
+                <div class="career-role">R&D Engineer Intern</div>
+                <div class="career-company">MTS Defense Company</div>
+                <p class="career-desc">
+                    Proposed a conceptual design of a 20N Green Bipropellant Thruster that outperformed electric systems in response time by 50%.
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="Omer_Gadalla_CVB22.pdf" target="_blank" class="btn-cv">View Full CV</a>
+            </div>
+
         </div>
     </section>
 
@@ -292,6 +372,16 @@
             </div>
         </div>
 
+    </section>
+
+    <section id="portfolio-download" style="background-color: var(--bg-white); color: var(--text-on-white); text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-on-white);">More Technical Work</h2>
+            <p style="color: var(--text-muted-white); font-size: 1.1rem; margin-bottom: 3rem;">
+                Explore detailed technical reports on the <strong>20N Green Propellant Thruster</strong>, <strong>Nozzle MOC Optimization</strong>, and <strong>Combustion Equilibrium Analysis</strong>.
+            </p>
+            <a href="Omer_Gadalla_Portofolio.pdf" target="_blank" class="btn-main" style="background-color: var(--primary-blue); color: white; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);">View Complete Portfolio (PDF)</a>
+        </div>
     </section>
 
     <section id="contact">
