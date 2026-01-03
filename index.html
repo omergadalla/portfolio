@@ -12,23 +12,15 @@
 
     <style>
         :root {
-            /* --- NEW COLOR THEME --- */
-            
-            /* Deep Navy Blue (replaces black) */
+            /* COLORS */
             --bg-navy: #0a1128; 
-            
-            /* Light/White Theme */
             --bg-white: #f8fafc;
-            --text-on-white: #1e293b; /* Dark navy text for white areas */
-            --text-muted-white: #64748b; /* Muted text for white areas */
-
-            /* Dark Theme Text */
+            --text-on-white: #1e293b;
+            --text-muted-white: #64748b;
             --text-on-dark: #ffffff;
             --text-muted-dark: #94a3b8;
-
-            /* Accents */
             --primary-blue: #3b82f6;
-            --glass-panel: rgba(10, 17, 40, 0.6); /* Navy glass */
+            --glass-panel: rgba(10, 17, 40, 0.6);
             --border-glass: rgba(255, 255, 255, 0.1);
         }
 
@@ -42,47 +34,34 @@
             overflow-x: hidden;
         }
 
-        /* --- 3D BACKGROUND LAYER --- */
+        /* 3D BACKGROUND */
         #spline-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            z-index: 0; /* Behind everything */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 0;
         }
 
-        /* --- NAVIGATION --- */
+        /* NAV */
         nav {
             position: fixed; top: 0; width: 100%; padding: 2rem 5%; z-index: 100;
             display: flex; justify-content: space-between; align-items: center;
-            /* Add subtle background for readability over 3D */
             background: linear-gradient(to bottom, rgba(10, 17, 40, 0.8), transparent);
         }
-        .logo { font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        .logo { font-weight: 800; font-size: 1.2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
         .nav-links { list-style: none; display: flex; gap: 2.5rem; }
         .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 500; opacity: 0.9; transition: 0.3s; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
         .nav-links a:hover { opacity: 1; color: var(--primary-blue); }
 
-        /* --- HERO SECTION (Dark Navy) --- */
+        /* HERO */
         header#hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            z-index: 10;
-            pointer-events: none; /* Allows clicking through to the 3D model */
+            position: relative; min-height: 100vh; display: flex; align-items: center; padding: 0 5%; z-index: 10;
+            pointer-events: none;
         }
+        .hero-content { max-width: 650px; pointer-events: auto; }
 
-        .hero-content {
-            max-width: 650px;
-            pointer-events: auto; /* Re-enable clicking for buttons */
-        }
-
+        /* PROFILE PICTURE - MADE BIGGER AS REQUESTED */
         .profile-frame {
-            width: 90px; height: 90px; border-radius: 50%; overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.2); margin-bottom: 2rem;
+            width: 140px; height: 140px; /* Increased from 90px */
+            border-radius: 50%; overflow: hidden;
+            border: 3px solid rgba(255,255,255,0.2); margin-bottom: 2rem;
             box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
         }
         .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
@@ -104,40 +83,31 @@
         .btn-main {
             display: inline-block; background: white; color: var(--bg-navy);
             padding: 1rem 2rem; text-decoration: none; font-weight: 700; border-radius: 50px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: 0.2s;
         }
         .btn-main:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
 
-        /* --- SECTIONS COMMON --- */
-        section {
-            position: relative; z-index: 20; padding: 8rem 5%;
-        }
+        /* SECTIONS */
+        section { position: relative; z-index: 20; padding: 8rem 5%; }
 
-        /* --- EXPERIENCE (WHITE SECTION) --- */
-        #experience { 
-            background-color: var(--bg-white); 
-            color: var(--text-on-white); 
-        }
+        /* EXPERIENCE */
+        #experience { background-color: var(--bg-white); color: var(--text-on-white); }
         .section-title { font-size: 3rem; margin-bottom: 4rem; font-weight: 800; color: var(--text-on-white); }
         
         .exp-card {
-            background: white; /* Solid white card */
-            border: 1px solid #e2e8f0;
+            background: white; border: 1px solid #e2e8f0;
             padding: 2.5rem; border-radius: 16px; margin-bottom: 2rem;
-            transition: 0.3s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
         .exp-card:hover { border-color: var(--primary-blue); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
         .exp-role { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
         .exp-company { font-family: 'JetBrains Mono', monospace; color: var(--primary-blue); font-size: 0.9rem; margin-bottom: 1.5rem; display: block; }
         .exp-card p { color: var(--text-muted-white); }
 
-        /* --- FLAGSHIP PROJECT (NAVY SECTION) --- */
+        /* PROJECT SECTION */
         #featured-project { 
-            background-color: var(--bg-navy); 
-            color: var(--text-on-dark);
+            background-color: var(--bg-navy); color: var(--text-on-dark);
             border-top: 1px solid var(--border-glass); 
-            /* Gradient fade in from the white section above */
             background: linear-gradient(to bottom, var(--bg-navy), var(--bg-navy));
         }
         
@@ -158,17 +128,12 @@
         
         .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
-        /* --- CONTACT (WHITE SECTION) --- */
-        #contact { 
-            background-color: var(--bg-white); 
-            color: var(--text-on-white);
-            text-align: center; 
-            border-top: 1px solid #e2e8f0; 
-        }
+        /* CONTACT */
+        #contact { background-color: var(--bg-white); color: var(--text-on-white); text-align: center; border-top: 1px solid #e2e8f0; }
         .contact-link { display: block; font-size: 1.5rem; color: var(--text-on-white); text-decoration: none; margin: 1rem 0; font-weight: 700; }
         .contact-link:hover { color: var(--primary-blue); }
 
-        /* Mobile Responsive */
+        /* MOBILE */
         @media (max-width: 900px) {
             h1 { font-size: 3rem; }
             .step-row, .step-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 3rem; }
@@ -203,7 +168,7 @@
             <h1>Propulsion & Launch Systems.</h1>
             <p class="bio">
                 Specializing in Liquid Rocket Engines, Injector Atomization, and CFD. 
-                Designing flight hardware that survives.
+                Designing hardware that flies.
             </p>
             
             <a href="#featured-project" class="btn-main">View Flagship Project</a>
@@ -233,12 +198,29 @@
     <section id="featured-project">
         <div style="text-align: center; margin-bottom: 6rem;">
             <span class="role-tag">FLAGSHIP DEVELOPMENT</span>
-            <h2 style="font-size: 3rem; font-weight: 800; margin-top: 1rem; color: white;">100N Liquid Bipropellant Engine</h2>
+            <h2 style="font-size: 3rem; font-weight: 800; margin-top: 1rem; color: white;">100N Liquid Bipropellant Rocket Engine</h2>
         </div>
 
         <div class="step-row">
             <div class="step-content">
-                <span class="step-number">PHASE 01: SIMULATION</span>
+                <span class="step-number">PHASE 01: SYSTEM MODELING</span>
+                <h3>Architecture & Logic.</h3>
+                <p>
+                    We first did The NASA CEA then the simscape model of the design.
+                </p>
+                <p>
+                    This critical first step established our propellant mass flow rates and sizing requirements before any CAD geometry was generated.
+                </p>
+                <span class="tech-tag">> NASA CEA / MATLAB Simscape</span>
+            </div>
+            <div class="step-img-container">
+                <img src="sim.png" alt="Simscape Model">
+            </div>
+        </div>
+
+        <div class="step-row reverse">
+            <div class="step-content">
+                <span class="step-number">PHASE 02: CFD SIMULATION</span>
                 <h3>Flow Validation.</h3>
                 <p>
                     Before manufacturing, we had to prove the flow physics. I ran <strong>Viscous Compressible Flow</strong> simulations in ANSYS Fluent to validate our nozzle contour.
@@ -253,15 +235,15 @@
             </div>
         </div>
 
-        <div class="step-row reverse">
+        <div class="step-row">
             <div class="step-content">
-                <span class="step-number">PHASE 02: THERMAL STRATEGY</span>
+                <span class="step-number">PHASE 03: THERMAL STRATEGY</span>
                 <h3>Heat Sink Design.</h3>
                 <p>
                     A 10-second burn at 3000K generates immense thermal loads. 
                 </p>
                 <p>
-                    We utilized a <strong>Heat Sink / Capacitive</strong> cooling strategy. We selected high-performance <strong>Inconel and Copper alloys</strong> capable of absorbing the thermal load for the full duration without exceeding the material's structural failure limits.
+                    We utilized a <strong>Heat Sink / Capacitive</strong> cooling strategy. We selected high-performance <strong>Inconel and Copper alloys</strong> capable of absorbing the thermal load for the full duration.
                 </p>
                  <span class="tech-tag">> Transient Thermal Analysis / Inconel 718</span>
             </div>
@@ -270,15 +252,15 @@
             </div>
         </div>
 
-        <div class="step-row">
+        <div class="step-row reverse">
             <div class="step-content">
-                <span class="step-number">PHASE 03: ADDITIVE MANUFACTURING</span>
+                <span class="step-number">PHASE 04: ADDITIVE MANUFACTURING</span>
                 <h3>Printed for Precision.</h3>
                 <p>
                     To achieve the complex internal geometries of the injector and cooling interfaces, we moved away from traditional CNC.
                 </p>
                 <p>
-                    The combustion chamber and injector were manufactured using <strong>Additive Manufacturing (3D Printing)</strong>. This allowed us to print the complex swirler patterns directly in Inconel.
+                    The combustion chamber and injector were manufactured using <strong>Additive Manufacturing (3D Printing)</strong> in Inconel.
                 </p>
                 <p style="font-size: 0.9rem; color: var(--primary-blue); margin-top: 1rem;">
                     Propellants: Gaseous Oxygen (GOX) & Jet-A1
@@ -294,15 +276,15 @@
             </div>
         </div>
 
-        <div class="step-row reverse">
+        <div class="step-row">
             <div class="step-content">
-                <span class="step-number">PHASE 04: VALIDATION</span>
+                <span class="step-number">PHASE 05: VALIDATION</span>
                 <h3>The Spray Test.</h3>
                 <p>
                     Before ignition, we verify fluid dynamics. We conducted a "Cold Flow" test to visualize the injector's atomization cone.
                 </p>
                 <p>
-                    This confirmed that our GOX/Fuel mixture would impinge correctly, ensuring stable combustion and preventing hard starts.
+                    This confirmed that our GOX/Fuel mixture would impinge correctly, ensuring stable combustion.
                 </p>
             </div>
             <div class="step-img-container">
