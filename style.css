@@ -17,7 +17,7 @@ body {
     line-height: 1.6;
 }
 
-/* CONTAINER - Increased width for bigger desktop images */
+/* CONTAINER */
 .container {
     max-width: 1200px; 
     margin: 0 auto;
@@ -43,17 +43,53 @@ body {
 .nav-links { list-style: none; display: flex; align-items: center; }
 .nav-logo { color: white !important; font-weight: 800; margin-right: auto; padding-left: 20px; }
 
-/* HERO SECTION */
+/* HERO SECTION (Merged with About) */
 #hero {
     padding-top: 180px; padding-bottom: 100px;
-    text-align: left;
+    display: flex;
+    align-items: center;
+    min-height: 80vh;
 }
+
+.hero-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+    gap: 4rem;
+}
+
+.hero-text {
+    flex: 2;
+}
+
 .hero-name { font-size: 3.5rem; font-weight: 800; line-height: 1; letter-spacing: -1px; margin-bottom: 10px; }
-.hero-title { font-size: 1.2rem; font-weight: 400; color: var(--tech-blue); font-family: 'JetBrains Mono', monospace; margin-bottom: 20px; }
-.hero-objective { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin-bottom: 40px; }
+.hero-title { font-size: 1.2rem; font-weight: 400; color: var(--tech-blue); font-family: 'JetBrains Mono', monospace; margin-bottom: 30px; }
+
+/* Hero Bullets Styling */
+.hero-bullets li { 
+    margin-bottom: 12px; 
+    font-size: 1.05rem; 
+    color: #e2e8f0; 
+}
+
+/* Profile Picture in Hero */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+.profile-frame {
+    width: 180px; height: 180px; 
+    border-radius: 50%; overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.2); 
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+}
+.profile-frame img { width: 100%; height: 100%; object-fit: cover; }
+
 
 /* BUTTONS */
-.btn-group { display: flex; gap: 15px; }
+.btn-group { display: flex; gap: 15px; margin-top: 2rem; flex-wrap: wrap; }
 .btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 10px 20px; border-radius: 4px; font-weight: 600; text-decoration: none; font-size: 0.9rem;
@@ -73,21 +109,7 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
     padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;
 }
 
-/* --- ABOUT SECTION --- */
-.about-flex {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-}
-.profile-frame {
-    width: 140px; height: 140px; 
-    border-radius: 50%; overflow: hidden;
-    border: 3px solid rgba(255,255,255,0.2); 
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
-    flex-shrink: 0;
-}
-.profile-frame img { width: 100%; height: 100%; object-fit: cover; }
-
+/* LISTS */
 .clean-list { list-style: none; }
 .clean-list li { margin-bottom: 15px; padding-left: 20px; position: relative; }
 .clean-list li::before { content: '•'; color: var(--tech-blue); position: absolute; left: 0; font-weight: bold; }
@@ -101,7 +123,7 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 .skill-column ul { list-style: none; }
 .skill-column li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; }
 
-/* --- FLAGSHIP PROJECT (Images Bigger on Desktop) --- */
+/* --- FLAGSHIP PROJECT --- */
 .role-tag {
     display: inline-block; padding: 6px 12px; border: 1px solid var(--tech-blue);
     color: var(--tech-blue); border-radius: 50px; font-size: 0.8rem; 
@@ -109,7 +131,6 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 }
 .step-row {
     display: grid; 
-    /* CHANGED: More space for images (1.3fr) vs text (1fr) */
     grid-template-columns: 1fr 1.3fr; 
     gap: 4rem; 
     align-items: center; 
@@ -122,7 +143,6 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 .step-number { font-family: 'JetBrains Mono', monospace; color: var(--tech-blue); font-size: 1rem; font-weight: 700; display: block; margin-bottom: 0.5rem; }
 .step-content h3 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; color: white; line-height: 1.1; }
 
-/* CHANGED: Text color set to off-white for better visibility */
 .step-content p { color: #f1f5f9; font-size: 1.1rem; margin-bottom: 1rem; }
 
 .tech-tag { color: #60a5fa; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; display: block; margin-top: 1rem; }
@@ -149,9 +169,9 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 .project-title-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
 .project-title-row h3 { font-size: 1.2rem; font-weight: 700; color: white; }
 .project-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
-.project-desc { font-style: italic; color: #f1f5f9; margin-bottom: 15px; } /* Whiter text */
+.project-desc { font-style: italic; color: #f1f5f9; margin-bottom: 15px; }
 
-.project-details p { font-size: 0.9rem; margin-bottom: 5px; color: #e2e8f0; } /* Whiter text */
+.project-details p { font-size: 0.9rem; margin-bottom: 5px; color: #e2e8f0; }
 .project-details strong { color: var(--tech-blue); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; display: inline-block; width: 60px; }
 
 /* CONTACT */
@@ -162,13 +182,14 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 @media (max-width: 900px) {
     .nav-links { display: none; }
     .sticky-nav { justify-content: center; }
-    .hero-name { font-size: 2.5rem; }
-    .skills-grid { grid-template-columns: 1fr; gap: 30px; }
-    .btn-group { flex-direction: column; }
-    .btn { width: 100%; justify-content: center; }
     
-    .about-flex { flex-direction: column; text-align: center; gap: 20px; }
-    .clean-list li { padding-left: 0; text-align: left; }
+    .hero-container { flex-direction: column-reverse; gap: 2rem; align-items: center; text-align: center; }
+    .hero-text { flex: 1; }
+    .hero-name { font-size: 2.5rem; }
+    .btn-group { justify-content: center; }
+    .clean-list li { text-align: left; }
+    
+    .skills-grid { grid-template-columns: 1fr; gap: 30px; }
     
     .step-row, .step-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2.5rem; }
     .step-img-container { order: 1; } 
