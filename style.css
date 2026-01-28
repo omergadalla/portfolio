@@ -17,9 +17,9 @@ body {
     line-height: 1.6;
 }
 
-/* CONTAINER */
+/* CONTAINER - Increased width for bigger desktop images */
 .container {
-    max-width: 1000px; 
+    max-width: 1200px; 
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -73,19 +73,18 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
     padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;
 }
 
-/* --- ABOUT SECTION WITH OLD PROFILE PIC STYLE --- */
+/* --- ABOUT SECTION --- */
 .about-flex {
     display: flex;
     align-items: center;
     gap: 40px;
 }
-/* Reusing the exact .profile-frame style from old CSS */
 .profile-frame {
     width: 140px; height: 140px; 
     border-radius: 50%; overflow: hidden;
     border: 3px solid rgba(255,255,255,0.2); 
     box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
-    flex-shrink: 0; /* Prevents squishing */
+    flex-shrink: 0;
 }
 .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -102,14 +101,19 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 .skill-column ul { list-style: none; }
 .skill-column li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; }
 
-/* --- FLAGSHIP PROJECT (RESTORED OLD VISUALS) --- */
+/* --- FLAGSHIP PROJECT (Images Bigger on Desktop) --- */
 .role-tag {
     display: inline-block; padding: 6px 12px; border: 1px solid var(--tech-blue);
     color: var(--tech-blue); border-radius: 50px; font-size: 0.8rem; 
     font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;
 }
 .step-row {
-    display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; margin-bottom: 6rem;
+    display: grid; 
+    /* CHANGED: More space for images (1.3fr) vs text (1fr) */
+    grid-template-columns: 1fr 1.3fr; 
+    gap: 4rem; 
+    align-items: center; 
+    margin-bottom: 6rem;
 }
 .step-row.reverse { direction: rtl; } 
 .step-row.reverse .step-content { direction: ltr; }
@@ -117,7 +121,9 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 .step-content { padding: 1rem; }
 .step-number { font-family: 'JetBrains Mono', monospace; color: var(--tech-blue); font-size: 1rem; font-weight: 700; display: block; margin-bottom: 0.5rem; }
 .step-content h3 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; color: white; line-height: 1.1; }
-.step-content p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1rem; }
+
+/* CHANGED: Text color set to off-white for better visibility */
+.step-content p { color: #f1f5f9; font-size: 1.1rem; margin-bottom: 1rem; }
 
 .tech-tag { color: #60a5fa; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; display: block; margin-top: 1rem; }
 
@@ -130,7 +136,7 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 
 .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
-/* --- COMPACT PROJECT CARDS (For the rest) --- */
+/* --- COMPACT PROJECT CARDS --- */
 .projects-grid-compact {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -143,9 +149,9 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 .project-title-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
 .project-title-row h3 { font-size: 1.2rem; font-weight: 700; color: white; }
 .project-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
-.project-desc { font-style: italic; color: var(--text-muted); margin-bottom: 15px; }
+.project-desc { font-style: italic; color: #f1f5f9; margin-bottom: 15px; } /* Whiter text */
 
-.project-details p { font-size: 0.9rem; margin-bottom: 5px; color: #cbd5e1; }
+.project-details p { font-size: 0.9rem; margin-bottom: 5px; color: #e2e8f0; } /* Whiter text */
 .project-details strong { color: var(--tech-blue); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; display: inline-block; width: 60px; }
 
 /* CONTACT */
@@ -161,11 +167,9 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
     .btn-group { flex-direction: column; }
     .btn { width: 100%; justify-content: center; }
     
-    /* Mobile tweaks for About & Flagship */
     .about-flex { flex-direction: column; text-align: center; gap: 20px; }
     .clean-list li { padding-left: 0; text-align: left; }
     
-    /* Flagship Mobile Stacking */
     .step-row, .step-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2.5rem; }
     .step-img-container { order: 1; } 
     .step-content { order: 2; padding: 0; }
