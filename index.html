@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omer Gadalla | Entery Level Aerospace Engineer</title>
+    <title>Omer Gadalla | Launch Systems Engineer</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="spline-container"></div>
 
-    <nav>
-        <div class="logo">Omer Gadalla</div>
+    <nav class="sticky-nav">
+        <a href="#hero" class="nav-logo"><i class="fas fa-rocket"></i> Home</a>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
-            <li><a href="#experience">Career</a></li>
-            <li><a href="#featured-project">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="Omer_Gadalla_CV.pdf" target="_blank" class="nav-highlight">Resume</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -30,194 +34,165 @@
                 <img src="profile.png" alt="Omer Gadalla" width="140" height="140">
             </div>
             
-            <span class="role-tag">Entery Level Aerospace Engineer</span>
+            <span class="role-tag"><i class="fas fa-code-branch"></i> Entery Level Aerospace Engineer</span>
             <h1>Rocket Propulsion & Launch Systems.</h1>
+            
             <p class="bio">
-                B.S. in Aerospace Engineering | Propulsion • CFD • Launch Systems
-Seeking Full-Time Propulsion / Launch Systems Engineering Roles
+                <strong>Designing hardware that flies.</strong> Specializing in <span class="highlight">Propellant Feed Systems</span>, <span class="highlight">Injectors</span>, and <span class="highlight">Combustion Chambers</span>.
             </p>
             
-            <a href="#featured-project" class="btn-main">View Flagship Project</a>
+            <div class="hero-buttons">
+                <a href="#projects" class="btn-main">View Technical Projects</a>
+                <a href="Omer_Gadalla_CV.pdf" target="_blank" class="btn-secondary"><i class="fas fa-file-download"></i> Download Resume</a>
+            </div>
         </div>
     </header>
 
-    <section id="experience">
-        <h2 class="section-title">Career Path</h2>
+    <section id="skills" class="section-light">
+        <h2 class="section-title"><i class="fas fa-tools"></i> Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-wind"></i></div>
+                <h3>Analysis & CFD</h3>
+                <p>ANSYS Fluent, NASA CEA, MATLAB Simscape, Thermal Analysis, FEA</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-cube"></i></div>
+                <h3>Design & CAD</h3>
+                <p>SolidWorks, Siemens NX, Additive Manufacturing (DFAM), GD&T</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-flask"></i></div>
+                <h3>Propulsion</h3>
+                <p>Liquid Bipropellant, Green Propellant, Injector Design, Cooling Systems</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon"><i class="fas fa-microchip"></i></div>
+                <h3>Testing</h3>
+                <p>Cold Flow Testing, Data Acquisition, Instrumentation, Safety Protocols</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section-dark">
+        <h2 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h2>
         
         <div class="career-timeline">
             
             <div class="career-item">
-                <span class="career-date">2021 – 2026</span>
-                <div class="career-role">B.S. Aerospace Engineering</div>
-                <div class="career-company">Middle East Technical University (METU)</div>
-                <p class="career-desc">
-                    Passion in Rocket Propulsion and Space Systems.
-                </p>
+                <span class="career-date">Feb 2025 – Present</span>
+                <div class="career-header">
+                    <h3 class="career-role">Propulsion Analysis Team Lead</h3>
+                    <span class="career-company">Galaxy Rocket Team (TEKNOFEST)</span>
+                </div>
+                <ul class="bullet-list">
+                    <li>Led <strong>thermal and CFD analysis</strong> for a 100N GOX/Jet-A1 rocket engine.</li>
+                    <li>Validated nozzle contours using <strong>ANSYS Fluent</strong> (K-Epsilon model) to optimize shock location.</li>
+                    <li>Designed a <strong>regenerative cooling system</strong> to handle 3000K combustion temperatures.</li>
+                </ul>
             </div>
 
             <div class="career-item">
-                <span class="career-date">FEB 2025 – PRESENT</span>
-                <div class="career-role">Propulsion Analysis Team Lead</div>
-                <div class="career-company">Galaxy Rocket Team (TEKNOFEST)</div>
-                <p class="career-desc">
-                    Led the thermal and CFD analysis of a 100N GOX/Jet-A1 rocket engine.
-                </p>
+                <span class="career-date">Feb 2025 – Present</span>
+                <div class="career-header">
+                    <h3 class="career-role">CFD & Structural Analysis Lead</h3>
+                    <span class="career-company">Galaxy Rocket Team</span>
+                </div>
+                <ul class="bullet-list">
+                    <li>Optimized aerodynamic design for a <strong>Mach 1.4</strong> high-altitude rocket (15,000 ft).</li>
+                    <li>Conducted <strong>FEA structural validation</strong> on airframe components to ensure flight safety factors.</li>
+                </ul>
             </div>
 
             <div class="career-item">
-                <span class="career-date">FEB 2025 – PRESENT</span>
-                <div class="career-role">CFD & Structural Analysis Lead</div>
-                <div class="career-company">Galaxy Rocket Team (TEKNOFEST)</div>
-                <p class="career-desc">
-                    Optimized the design of a Mach 1.4 high-altitude (15,000 ft) rocket.
-                </p>
-            </div>
-
-            <div class="career-item">
-                <span class="career-date">JULY 2025 – SEPT 2025</span>
-                <div class="career-role">R&D Engineer Intern</div>
-                <div class="career-company">MTS Defense Company</div>
-                <p class="career-desc">
-                    Proposed a conceptual design of a 20N Green Bipropellant Thruster that outperformed electric systems in response time by 50%.
-                </p>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="Omer_Gadalla_CV.pdf" target="_blank" class="btn-cv">View Full CV</a>
+                <span class="career-date">July 2025 – Sept 2025</span>
+                <div class="career-header">
+                    <h3 class="career-role">R&D Engineer Intern</h3>
+                    <span class="career-company">MTS Defense Company</span>
+                </div>
+                <ul class="bullet-list">
+                    <li>Designed a <strong>20N Green Bipropellant Thruster</strong> concept.</li>
+                    <li>Achieved a <strong>50% faster response time</strong> compared to traditional electric propulsion systems.</li>
+                    <li>Modeled propellant flow utilizing <strong>MATLAB Simscape</strong>.</li>
+                </ul>
             </div>
 
         </div>
     </section>
 
-    <section id="featured-project">
-        <div class="project-intro">
-            <span class="role-tag">FLAGSHIP PROJECT</span>
-            <h2>100N Liquid Bipropellant Rocket Engine</h2>
-        </div>
+    <section id="projects" class="section-light">
+        <h2 class="section-title"><i class="fas fa-project-diagram"></i> Featured Projects</h2>
 
-        <div class="step-row">
-            <div class="step-content">
-                <span class="step-number">PHASE 01: SYSTEM MODELING</span>
-                <h3>Architecture & Logic.</h3>
-                <p>
-                    We first did The NASA CEA then the simscape model of the design.
-                </p>
-                <p>
-                    This critical first step established our propellant mass flow rates and sizing requirements before any CAD geometry was generated.
-                </p>
-                <span class="tech-tag">> NASA CEA / MATLAB Simscape</span>
-            </div>
-            <div class="step-img-container">
-                <img src="sim.png" alt="Simscape Model" loading="lazy" width="800" height="450">
-            </div>
-        </div>
+        <div class="project-card featured">
+            <div class="project-content">
+                <div class="project-tag">FLAGSHIP PROJECT</div>
+                <h3>100N Liquid Bipropellant Rocket Engine</h3>
+                <p class="project-summary">End-to-end design, simulation, and manufacturing of a GOX/Jet-A1 rocket engine.</p>
+                
+                <ul class="project-bullets">
+                    <li><i class="fas fa-check-circle"></i> <strong>Modeled:</strong> Established mass flow rates using <strong>NASA CEA</strong> and <strong>Simscape</strong>.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Validated:</strong> Verified flow physics and shock locations via <strong>ANSYS Fluent</strong>.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Manufactured:</strong> Utilized <strong>DMLS 3D Printing</strong> (Inconel 718) for complex internal cooling channels.</li>
+                    <li><i class="fas fa-check-circle"></i> <strong>Tested:</strong> Conducted Cold Flow "Spray Tests" to verify injector atomization efficiency.</li>
+                </ul>
 
-        <div class="step-row reverse">
-            <div class="step-content">
-                <span class="step-number">PHASE 02: CFD SIMULATION</span>
-                <h3>Flow Validation.</h3>
-                <p>
-                    Before manufacturing, we had to prove the flow physics. I ran <strong>a CFD</strong> simulation in ANSYS Fluent to validate our nozzle contour.
-                </p>
-                <p>
-                    The goal was to investigate the shock location and nozzle flow properties.
-                </p>
-                <span class="tech-tag">> ANSYS Fluent / K-Epsilon Model</span>
-            </div>
-            <div class="step-img-container">
-                <img src="nozzlecfd.png" alt="CFD Mach Contour" loading="lazy" width="800" height="450">
-            </div>
-        </div>
-
-        <div class="step-row">
-            <div class="step-content">
-                <span class="step-number">PHASE 03: THERMAL STRATEGY</span>
-                <h3>Heat Sink Design.</h3>
-                <p>
-                    A 10-second burn at 3000K generates immense thermal loads. 
-                </p>
-                <p>
-                    We utilized a Heat Sink cooling strategy. We selected high-performance <strong>Inconel and Copper alloys</strong> capable of absorbing the thermal load for the full duration.
-                </p>
-                 <span class="tech-tag">> Transient Thermal Analysis / Inconel 718</span>
-            </div>
-            <div class="step-img-container">
-                <img src="thermal.png" alt="Thermal Analysis" loading="lazy" width="800" height="450">
-            </div>
-        </div>
-
-        <div class="step-row reverse">
-            <div class="step-content">
-                <span class="step-number">PHASE 04: ADDITIVE MANUFACTURING</span>
-                <h3>Printed for Precision.</h3>
-                <p>
-                    To achieve the complex internal geometries of the injector,we manufactured it using Additive Manufacturing techniques.
-                </p>
-                <p>
-           
-                </p>
-                <p style="font-size: 0.9rem; color: var(--primary-blue); margin-top: 1rem;">
-                    Propellants: Gaseous Oxygen (GOX) & Jet-A1
-                </p>
-            </div>
-            <div class="dual-grid">
-                <div class="step-img-container">
-                    <img src="rocketengine.png" alt="Engine Assembly" loading="lazy" width="400" height="400">
+                <div class="tech-stack">
+                    <span>ANSYS Fluent</span>
+                    <span>MATLAB</span>
+                    <span>Inconel 718</span>
+                    <span>Additive Mfg</span>
                 </div>
-                <div class="step-img-container">
-                    <img src="injector.png" alt="Injector Plate" loading="lazy" width="400" height="400">
+            </div>
+            <div class="project-visuals">
+                <img src="rocketengine.png" alt="Engine Assembly" loading="lazy">
+                <img src="sim.png" alt="Simulation Data" loading="lazy">
+            </div>
+        </div>
+
+        <div class="other-projects">
+            <h3 style="text-align:center; margin-bottom: 2rem;">Additional Engineering Reports</h3>
+            <div class="project-grid">
+                <div class="mini-project">
+                    <h4>20N Green Propellant Thruster</h4>
+                    <p>Conceptual design replacing toxic hydrazine with green alternatives.</p>
+                    <a href="Omer_Gadalla_Portofolio.pdf" class="text-link">View Analysis <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="mini-project">
+                    <h4>Nozzle Optimization (MOC)</h4>
+                    <p>Implemented Method of Characteristics code to define optimal nozzle bell curves.</p>
+                    <a href="Omer_Gadalla_Portofolio.pdf" class="text-link">View Code <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
-
-        <div class="step-row">
-            <div class="step-content">
-                <span class="step-number">PHASE 05: VALIDATION</span>
-                <h3>The Spray Test.</h3>
-                <p>
-                    Before ignition, we verify fluid dynamics. We conducted a "Cold Flow" test to visualize the injector's atomization cone.
-                </p>
-                <p>
-                    This confirmed that our GOX/Fuel mixture would impinge correctly, ensuring stable combustion.
-                </p>
-            </div>
-            <div class="step-img-container">
-                <img src="spreytest.png" alt="Spray Test" loading="lazy" width="800" height="450">
-            </div>
-        </div>
-
     </section>
 
-    <section id="portfolio-download" style="background-color: var(--bg-white); color: var(--text-on-white); text-align: center;">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text-on-white);">More Technical Work</h2>
-            <p style="color: var(--text-muted-white); font-size: 1.1rem; margin-bottom: 3rem;">
-                Explore detailed technical reports on the <strong>20N Green Propellant Thruster</strong>, <strong>Nozzle Optimization using Method Of Characteristics</strong>, and <strong>Combustion Equilibrium Analysis</strong>.
-            </p>
-            <a href="Omer_Gadalla_Portofolio.pdf" target="_blank" class="btn-main" style="background-color: var(--primary-blue); color: white; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);">View Complete Portfolio (PDF)</a>
+    <section id="contact" class="section-dark contact-section">
+        <h2 class="section-title">Ready for Launch?</h2>
+        <div class="contact-container">
+            <a href="mailto:omarnayer02@gmail.com" class="contact-box">
+                <i class="fas fa-envelope"></i>
+                <span>omarnayer02@gmail.com</span>
+            </a>
+            <a href="tel:+905527960300" class="contact-box">
+                <i class="fas fa-phone"></i>
+                <span>+90 552 796 03 00</span>
+            </a>
+            <a href="Omer_Gadalla_CV.pdf" target="_blank" class="contact-box highlight">
+                <i class="fas fa-file-pdf"></i>
+                <span>Download Full CV</span>
+            </a>
         </div>
-    </section>
-
-    <section id="contact">
-        <h2 style="font-size: 2rem; margin-bottom: 2rem; font-weight: 800; color: var(--text-on-white);">Ready for Launch?</h2>
-        <a href="mailto:omarnayer02@gmail.com" class="contact-link">omarnayer02@gmail.com</a>
-        <a href="tel:+905527960300" class="contact-link" style="color: var(--text-muted-white); font-size: 1.2rem;">+90 552 796 03 00</a>
     </section>
 
     <script>
         if (window.matchMedia("(min-width: 900px)").matches) {
-            // 1. Load the script dynamically
             const script = document.createElement('script');
             script.type = 'module';
             script.src = 'https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js';
             document.head.appendChild(script);
 
-            // 2. Inject the viewer element
             const container = document.getElementById('spline-container');
-            // We set the innerHTML to include the viewer
-            container.innerHTML = `
-                <spline-viewer url="https://prod.spline.design/QGx3t4wj-IjeaKSu/scene.splinecode"></spline-viewer>
-            `;
+            container.innerHTML = `<spline-viewer url="https://prod.spline.design/QGx3t4wj-IjeaKSu/scene.splinecode"></spline-viewer>`;
         }
     </script>
 </body>
