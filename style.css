@@ -1,5 +1,5 @@
 :root {
-    /* Engineering Color Palette: Navy, White, Tech Blue */
+    /* Engineering Color Palette */
     --bg-navy: #0a1128;
     --bg-card: #111a3b;
     --text-white: #ffffff;
@@ -17,14 +17,14 @@ body {
     line-height: 1.6;
 }
 
-/* CONTAINER & LAYOUT */
+/* CONTAINER */
 .container {
-    max-width: 900px; /* Constrained width for better reading scan */
+    max-width: 1000px; 
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* 3D BACKGROUND (Fallback for Mobile) */
+/* 3D BACKGROUND */
 #spline-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: -1;
     background: linear-gradient(to bottom, #0a1128, #1e293b);
@@ -73,7 +73,23 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
     padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;
 }
 
-/* ABOUT & LISTS */
+/* --- ABOUT SECTION WITH PHOTO --- */
+.about-layout {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.about-img-container {
+    flex-shrink: 0;
+}
+.profile-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
 .clean-list { list-style: none; }
 .clean-list li { margin-bottom: 15px; padding-left: 20px; position: relative; }
 .clean-list li::before { content: '•'; color: var(--tech-blue); position: absolute; left: 0; font-weight: bold; }
@@ -87,7 +103,34 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 .skill-column ul { list-style: none; }
 .skill-column li { margin-bottom: 8px; font-size: 0.95rem; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 4px; }
 
-/* PROJECT CARDS */
+/* --- FLAGSHIP PROJECT (ORIGINAL STYLING RESTORED) --- */
+.role-tag {
+    display: inline-block; padding: 6px 12px; border: 1px solid var(--tech-blue);
+    color: var(--tech-blue); border-radius: 50px; font-size: 0.8rem; 
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;
+}
+.step-row {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; margin-bottom: 5rem;
+}
+.step-row.reverse { direction: rtl; } 
+.step-row.reverse .step-content { direction: ltr; }
+
+.step-content { padding: 1rem; }
+.step-number { font-family: 'JetBrains Mono', monospace; color: var(--tech-blue); font-size: 1rem; font-weight: 700; display: block; margin-bottom: 0.5rem; }
+.step-content h3 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; color: white; line-height: 1.1; }
+.step-content p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1rem; }
+
+.tech-tag { color: #60a5fa; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; display: block; margin-top: 1rem; }
+
+.step-img-container {
+    position: relative; border-radius: 12px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1); background: #000;
+}
+.step-img-container img { width: 100%; height: auto; display: block; opacity: 0.9; }
+
+.dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+/* --- OTHER PROJECT CARDS --- */
 .project-card {
     background: var(--bg-card); border: 1px solid var(--border-color);
     padding: 25px; margin-bottom: 20px; border-radius: 6px;
@@ -105,11 +148,19 @@ section { padding: 60px 0; border-bottom: 1px solid var(--border-color); }
 .contact-info a:hover { color: var(--tech-blue); }
 
 /* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-    .nav-links { display: none; } /* Simplified: Hide links, show Hero buttons */
+@media (max-width: 900px) {
+    .nav-links { display: none; }
     .sticky-nav { justify-content: center; }
     .hero-name { font-size: 2.5rem; }
     .skills-grid { grid-template-columns: 1fr; gap: 30px; }
     .btn-group { flex-direction: column; }
     .btn { width: 100%; justify-content: center; }
+    
+    /* Mobile tweaks for About & Flagship */
+    .about-layout { flex-direction: column; text-align: center; gap: 20px; }
+    .clean-list li { padding-left: 0; text-align: left; }
+    
+    .step-row, .step-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2rem; }
+    .step-img-container { order: 1; } 
+    .step-content { order: 2; padding: 0; }
 }

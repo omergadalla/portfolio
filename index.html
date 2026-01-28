@@ -7,9 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,7 +27,7 @@
     <header id="hero">
         <div class="container hero-content">
             <h1 class="hero-name">OMER GADALLA</h1>
-            <h2 class="hero-title">Aerospace Engineer | Propulsion, CFD & Rocket Systems </h2>
+            <h2 class="hero-title">Aerospace Engineer | Propulsion, CFD & Rocket Systems</h2>
             <p class="hero-objective">
                 Seeking entry-level roles in propulsion analysis and launch vehicle development.
             </p>
@@ -45,11 +43,16 @@
     <section id="about" class="section-dark">
         <div class="container">
             <h2 class="section-header">About</h2>
-            <ul class="clean-list">
-                <li><strong>Education:</strong> B.Sc. Aerospace Engineering, Middle East Technical University (METU), 2021–2026.</li>
-                <li><strong>Technical Interests:</strong> Liquid rocket propulsion, Computational Fluid Dynamics (CFD), and propellant feed system analysis.</li>
-                <li><strong>Career Direction:</strong> Targeting roles in Propulsion Engineering, CFD Analysis, and R&D.</li>
-            </ul>
+            <div class="about-layout">
+                <div class="about-img-container">
+                    <img src="profile.png" alt="Omer Gadalla" class="profile-photo">
+                </div>
+                <ul class="clean-list">
+                    <li><strong>Education:</strong> B.Sc. Aerospace Engineering, Middle East Technical University (METU), 2021–2026.</li>
+                    <li><strong>Technical Interests:</strong> Liquid rocket propulsion, Computational Fluid Dynamics (CFD), and propellant feed system analysis.</li>
+                    <li><strong>Career Direction:</strong> Targeting roles in Propulsion Engineering, CFD Analysis, and R&D.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -57,9 +60,8 @@
         <div class="container">
             <h2 class="section-header">Technical Skills</h2>
             <div class="skills-grid">
-                
                 <div class="skill-column">
-                    <h3>Propulsion & Systems </h3>
+                    <h3>Propulsion & Systems</h3>
                     <ul>
                         <li>Liquid Bipropellant Rocket Engines</li>
                         <li>Propellant Feed Systems</li>
@@ -67,9 +69,8 @@
                         <li>Green Bipropellant Thrusters</li>
                     </ul>
                 </div>
-
                 <div class="skill-column">
-                    <h3>Simulation & Analysis </h3>
+                    <h3>Simulation & Analysis</h3>
                     <ul>
                         <li>Ansys Fluent / CFX</li>
                         <li>OpenFOAM</li>
@@ -77,9 +78,8 @@
                         <li>NASA CEA / OpenRocket</li>
                     </ul>
                 </div>
-
                 <div class="skill-column">
-                    <h3>Software & Tools </h3>
+                    <h3>Software & Tools</h3>
                     <ul>
                         <li>MATLAB & Simulink</li>
                         <li>MATLAB Simscape</li>
@@ -87,9 +87,8 @@
                         <li>Autodesk Inventor</li>
                     </ul>
                 </div>
-
                 <div class="skill-column">
-                    <h3>Engineering Fundamentals </h3>
+                    <h3>Engineering Fundamentals</h3>
                     <ul>
                         <li>External Aerodynamics</li>
                         <li>Thermo-structural FEA</li>
@@ -97,7 +96,6 @@
                         <li>System Architecture</li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </section>
@@ -106,22 +104,81 @@
         <div class="container">
             <h2 class="section-header">Technical Projects</h2>
             
-            <div class="project-card">
-                <div class="project-title-row">
-                    <h3>100N Liquid Bipropellant Rocket Engine (B3) </h3>
-                    <span class="project-date">2025 – 2026</span>
+            <div class="flagship-wrapper">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <span class="role-tag">FLAGSHIP PROJECT</span>
+                    <h3 style="font-size: 2rem; color: white; margin-top: 10px;">100N Liquid Bipropellant Rocket Engine</h3>
+                    <p style="color: var(--text-muted);">From System Modeling to Additive Manufacturing</p>
                 </div>
-                <p class="project-desc">Design and analysis of a 100N liquid bipropellant rocket engine using GOX/Jet-A1.</p>
-                <div class="project-details">
-                    <p><strong>Role:</strong> Modeled propellant feed system and performed thermo-structural FEA.</p>
-                    <p><strong>Tools:</strong> MATLAB Simscape, Ansys Fluent, Ansys Structural.</p>
-                    <p><strong>Output:</strong> Validated system response, chamber flow behavior, and structural integrity at 3000 K.</p>
+
+                <div class="step-row">
+                    <div class="step-content">
+                        <span class="step-number">PHASE 01: SYSTEM MODELING</span>
+                        <h3>Architecture & Logic.</h3>
+                        <p>Established propellant mass flow rates and sizing requirements using <strong>NASA CEA</strong> and <strong>MATLAB Simscape</strong> before CAD generation.</p>
+                        <span class="tech-tag">> NASA CEA / MATLAB Simscape</span>
+                    </div>
+                    <div class="step-img-container">
+                        <img src="sim.png" alt="Simscape Model" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="step-row reverse">
+                    <div class="step-content">
+                        <span class="step-number">PHASE 02: CFD SIMULATION</span>
+                        <h3>Flow Validation.</h3>
+                        <p>Validated nozzle contour and shock locations using <strong>ANSYS Fluent</strong> (K-Epsilon Model) to prove flow physics before manufacturing.</p>
+                        <span class="tech-tag">> ANSYS Fluent</span>
+                    </div>
+                    <div class="step-img-container">
+                        <img src="nozzlecfd.png" alt="CFD Mach Contour" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="step-row">
+                    <div class="step-content">
+                        <span class="step-number">PHASE 03: THERMAL STRATEGY</span>
+                        <h3>Heat Sink Design.</h3>
+                        <p>Designed a <strong>Heat Sink / Capacitive</strong> cooling strategy using high-performance <strong>Inconel 718</strong> to absorb thermal loads during 10s burn.</p>
+                        <span class="tech-tag">> Transient Thermal Analysis</span>
+                    </div>
+                    <div class="step-img-container">
+                        <img src="thermal.png" alt="Thermal Analysis" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="step-row reverse">
+                    <div class="step-content">
+                        <span class="step-number">PHASE 04: MANUFACTURING</span>
+                        <h3>Additive Manufacturing.</h3>
+                        <p>Combustion chamber and injector manufactured via <strong>DMLS 3D Printing</strong> (Inconel 718) to achieve complex internal cooling channels.</p>
+                        <p style="font-size: 0.9rem; color: var(--tech-blue); margin-top: 1rem;">Propellants: GOX & Jet-A1</p>
+                    </div>
+                    <div class="dual-grid">
+                        <div class="step-img-container"><img src="rocketengine.png" alt="Engine Assembly" loading="lazy"></div>
+                        <div class="step-img-container"><img src="injector.png" alt="Injector Plate" loading="lazy"></div>
+                    </div>
+                </div>
+
+                <div class="step-row">
+                    <div class="step-content">
+                        <span class="step-number">PHASE 05: VALIDATION</span>
+                        <h3>The Spray Test.</h3>
+                        <p>Conducted "Cold Flow" testing to verify injector atomization cone and impingement stability before hot fire.</p>
+                    </div>
+                    <div class="step-img-container">
+                        <img src="spreytest.png" alt="Spray Test" loading="lazy">
+                    </div>
                 </div>
             </div>
+            
+            <div style="margin-top: 6rem; margin-bottom: 3rem; border-top: 1px solid var(--border-color);"></div>
+
+            <h3 style="font-size: 1.5rem; color: white; margin-bottom: 2rem;">Additional Engineering Reports</h3>
 
             <div class="project-card">
                 <div class="project-title-row">
-                    <h3>TEKNOFEST Liquid Bipropellant Rocket (A7) </h3>
+                    <h3>TEKNOFEST Liquid Bipropellant Rocket (A7)</h3>
                     <span class="project-date">2026</span>
                 </div>
                 <p class="project-desc">Liquid bipropellant rocket targeting 1200 N.s impulse and 3000 ft apogee.</p>
@@ -134,7 +191,7 @@
 
             <div class="project-card">
                 <div class="project-title-row">
-                    <h3>20N Green Bipropellant Thruster </h3>
+                    <h3>20N Green Bipropellant Thruster</h3>
                     <span class="project-date">Internship 2025</span>
                 </div>
                 <p class="project-desc">Conceptual design of a 20N green bipropellant thruster for small satellites.</p>
@@ -152,7 +209,7 @@
         <div class="container">
             <h2 class="section-header">Contact</h2>
             <div class="contact-info">
-                <a href="mailto:omarnayer02@gmail.com"><i class="fas fa-envelope"></i> omarnayer02@gmail.com [cite: 3]</a>
+                <a href="mailto:omarnayer02@gmail.com"><i class="fas fa-envelope"></i> omarnayer02@gmail.com</a>
                 <span>|</span>
                 <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <span>|</span>
@@ -169,7 +226,6 @@
             script.type = 'module';
             script.src = 'https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js';
             document.head.appendChild(script);
-
             const container = document.getElementById('spline-container');
             container.innerHTML = `<spline-viewer url="https://prod.spline.design/QGx3t4wj-IjeaKSu/scene.splinecode"></spline-viewer>`;
         }
