@@ -8,197 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js"></script>
-
-    <style>
-        :root {
-            /* COLORS */
-            --bg-navy: #0a1128; 
-            --bg-white: #f8fafc;
-            --text-on-white: #1e293b;
-            --text-muted-white: #64748b;
-            --text-on-dark: #ffffff;
-            --text-muted-dark: #94a3b8;
-            --primary-blue: #3b82f6;
-            --glass-panel: rgba(10, 17, 40, 0.6);
-            --border-glass: rgba(255, 255, 255, 0.1);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-navy);
-            color: var(--text-on-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* 3D BACKGROUND */
-        #spline-container {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 0;
-        }
-
-        /* NAV */
-        nav {
-            position: fixed; top: 0; width: 100%; padding: 2rem 5%; z-index: 100;
-            display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(10, 17, 40, 0.8), transparent);
-        }
-        .logo { font-weight: 800; font-size: 1.2rem; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-        .nav-links { list-style: none; display: flex; gap: 2.5rem; }
-        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 500; opacity: 0.9; transition: 0.3s; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
-        .nav-links a:hover { opacity: 1; color: var(--primary-blue); }
-
-        /* HERO */
-        header#hero {
-            position: relative; min-height: 100vh; display: flex; align-items: center; padding: 0 5%; z-index: 10;
-            pointer-events: none;
-        }
-        .hero-content { max-width: 650px; pointer-events: auto; }
-
-        /* PROFILE PICTURE */
-        .profile-frame {
-            width: 140px; height: 140px; 
-            border-radius: 50%; overflow: hidden;
-            border: 3px solid rgba(255,255,255,0.2); margin-bottom: 2rem;
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
-        }
-        .profile-frame img { width: 100%; height: 100%; object-fit: cover; }
-
-        h1 { 
-            font-size: 4.5rem; line-height: 1.05; margin-bottom: 1.5rem; font-weight: 800; 
-            letter-spacing: -2px; color: white;
-        }
-        
-        .role-tag {
-            display: inline-block; padding: 6px 12px; border: 1px solid var(--primary-blue);
-            color: var(--primary-blue); border-radius: 50px; font-size: 0.8rem; 
-            font-family: 'JetBrains Mono', monospace; margin-bottom: 1.5rem;
-            background: rgba(59, 130, 246, 0.1); backdrop-filter: blur(5px);
-        }
-
-        .bio { font-size: 1.2rem; color: var(--text-muted-dark); margin-bottom: 2.5rem; max-width: 500px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); }
-
-        .btn-main {
-            display: inline-block; background: white; color: var(--bg-navy);
-            padding: 1rem 2rem; text-decoration: none; font-weight: 700; border-radius: 50px;
-            transition: 0.2s;
-        }
-        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
-
-        /* SECTIONS COMMON */
-        section { position: relative; z-index: 20; padding: 8rem 5%; }
-
-        /* --- EXPERIENCE SECTION --- */
-        #experience { 
-            background-color: var(--bg-white); 
-            color: var(--text-on-white); 
-        }
-        .section-title { font-size: 3rem; margin-bottom: 4rem; font-weight: 800; color: var(--text-on-white); text-align: center; }
-
-        .career-timeline {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            padding-left: 30px;
-            border-left: 2px solid #e2e8f0;
-        }
-
-        .career-item {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-
-        /* The Dot */
-        .career-item::before {
-            content: '';
-            position: absolute;
-            left: -36px; /* Adjust to align with line */
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--primary-blue);
-            border: 3px solid white;
-            box-shadow: 0 0 0 2px var(--primary-blue);
-        }
-
-        .career-date {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--primary-blue);
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .career-role { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.2rem; line-height: 1.2; }
-        .career-company { font-size: 1.1rem; color: #475569; font-weight: 600; margin-bottom: 1rem; }
-        
-        .career-desc {
-            color: #64748b;
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* CV Button Style */
-        .btn-cv {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.8rem 1.5rem;
-            border: 2px solid var(--primary-blue);
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 8px;
-            transition: 0.2s;
-        }
-        .btn-cv:hover { background: var(--primary-blue); color: white; }
-
-        /* --- FLAGSHIP PROJECT --- */
-        #featured-project { 
-            background-color: var(--bg-navy); 
-            color: var(--text-on-dark);
-            border-top: 1px solid var(--border-glass); 
-        }
-        
-        .step-row { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; margin-bottom: 8rem; }
-        .step-row.reverse { direction: rtl; } 
-        .step-row.reverse .step-content { direction: ltr; }
-
-        .step-number { color: var(--primary-blue); font-family: 'JetBrains Mono', monospace; margin-bottom: 1rem; display: block; }
-        .step-content h3 { font-size: 2.5rem; margin-bottom: 1.5rem; line-height: 1.1; }
-        .step-content p { color: var(--text-muted-dark); font-size: 1.1rem; margin-bottom: 1.5rem; }
-        .tech-tag { color: #60a5fa; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; display: block; margin-top: 1rem; }
-
-        .step-img-container {
-            border-radius: 12px; overflow: hidden; border: 1px solid var(--border-glass);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5); background: #000;
-        }
-        .step-img-container img { width: 100%; height: auto; display: block; opacity: 0.9; }
-        
-        .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-
-        /* CONTACT */
-        #contact { background-color: var(--bg-white); color: var(--text-on-white); text-align: center; border-top: 1px solid #e2e8f0; }
-        .contact-link { display: block; font-size: 1.5rem; color: var(--text-on-white); text-decoration: none; margin: 1rem 0; font-weight: 700; }
-        .contact-link:hover { color: var(--primary-blue); }
-
-        /* MOBILE GLOBAL */
-        @media (max-width: 900px) {
-            h1 { font-size: 3rem; }
-            .step-row, .step-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 3rem; }
-            .step-img-container { order: 1; } .step-content { order: 2; }
-            .nav-links { display: none; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="spline-container">
-        <spline-viewer url="https://prod.spline.design/QGx3t4wj-IjeaKSu/scene.splinecode"></spline-viewer>
-    </div>
+    <div id="spline-container"></div>
 
     <nav>
         <div class="logo">Omer Gadalla</div>
@@ -213,7 +27,7 @@
     <header id="hero">
         <div class="hero-content">
             <div class="profile-frame">
-                <img src="profile.png" alt="Omer Gadalla">
+                <img src="profile.png" alt="Omer Gadalla" width="140" height="140">
             </div>
             
             <span class="role-tag">LAUNCH SYSTEMS DEVELOPMENT ENGINEER</span>
@@ -255,7 +69,7 @@
                 <div class="career-role">CFD & Structural Analysis Lead</div>
                 <div class="career-company">Galaxy Rocket Team (TEKNOFEST)</div>
                 <p class="career-desc">
-                    Optimized the design of a Mach 1.4 high-altitude (15,000 ft) rocket  .
+                    Optimized the design of a Mach 1.4 high-altitude (15,000 ft) rocket.
                 </p>
             </div>
 
@@ -276,9 +90,9 @@
     </section>
 
     <section id="featured-project">
-        <div style="text-align: center; margin-bottom: 6rem;">
+        <div class="project-intro">
             <span class="role-tag">FLAGSHIP PROJECT</span>
-            <h2 style="font-size: 3rem; font-weight: 800; margin-top: 1rem; color: white;">100N Liquid Bipropellant Rocket Engine</h2>
+            <h2>100N Liquid Bipropellant Rocket Engine</h2>
         </div>
 
         <div class="step-row">
@@ -294,7 +108,7 @@
                 <span class="tech-tag">> NASA CEA / MATLAB Simscape</span>
             </div>
             <div class="step-img-container">
-                <img src="sim.png" alt="Simscape Model">
+                <img src="sim.png" alt="Simscape Model" loading="lazy" width="800" height="450">
             </div>
         </div>
 
@@ -311,7 +125,7 @@
                 <span class="tech-tag">> ANSYS Fluent / K-Epsilon Model</span>
             </div>
             <div class="step-img-container">
-                <img src="nozzlecfd.png" alt="CFD Mach Contour">
+                <img src="nozzlecfd.png" alt="CFD Mach Contour" loading="lazy" width="800" height="450">
             </div>
         </div>
 
@@ -328,7 +142,7 @@
                  <span class="tech-tag">> Transient Thermal Analysis / Inconel 718</span>
             </div>
             <div class="step-img-container">
-                <img src="thermal.png" alt="Thermal Analysis">
+                <img src="thermal.png" alt="Thermal Analysis" loading="lazy" width="800" height="450">
             </div>
         </div>
 
@@ -340,7 +154,7 @@
                     To achieve the complex internal geometries of the injector and cooling interfaces, we moved away from traditional CNC.
                 </p>
                 <p>
-                    The combustion chamber and injector were manufactured using <strong>Additive Manufacturing (3D Printing).
+                    The combustion chamber and injector were manufactured using <strong>Additive Manufacturing (3D Printing).</strong>
                 </p>
                 <p style="font-size: 0.9rem; color: var(--primary-blue); margin-top: 1rem;">
                     Propellants: Gaseous Oxygen (GOX) & Jet-A1
@@ -348,10 +162,10 @@
             </div>
             <div class="dual-grid">
                 <div class="step-img-container">
-                    <img src="rocketengine.png" alt="Engine Assembly">
+                    <img src="rocketengine.png" alt="Engine Assembly" loading="lazy" width="400" height="400">
                 </div>
                 <div class="step-img-container">
-                    <img src="injector.png" alt="Injector Plate">
+                    <img src="injector.png" alt="Injector Plate" loading="lazy" width="400" height="400">
                 </div>
             </div>
         </div>
@@ -368,7 +182,7 @@
                 </p>
             </div>
             <div class="step-img-container">
-                <img src="spreytest.png" alt="Spray Test">
+                <img src="spreytest.png" alt="Spray Test" loading="lazy" width="800" height="450">
             </div>
         </div>
 
@@ -390,5 +204,21 @@
         <a href="tel:+905527960300" class="contact-link" style="color: var(--text-muted-white); font-size: 1.2rem;">+90 552 796 03 00</a>
     </section>
 
+    <script>
+        if (window.matchMedia("(min-width: 900px)").matches) {
+            // 1. Load the script dynamically
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = 'https://unpkg.com/@splinetool/viewer@1.12.29/build/spline-viewer.js';
+            document.head.appendChild(script);
+
+            // 2. Inject the viewer element
+            const container = document.getElementById('spline-container');
+            // We set the innerHTML to include the viewer
+            container.innerHTML = `
+                <spline-viewer url="https://prod.spline.design/QGx3t4wj-IjeaKSu/scene.splinecode"></spline-viewer>
+            `;
+        }
+    </script>
 </body>
 </html>
