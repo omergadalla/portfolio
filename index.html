@@ -43,9 +43,9 @@
     <section id="about" class="section-dark">
         <div class="container">
             <h2 class="section-header">About</h2>
-            <div class="about-layout">
-                <div class="about-img-container">
-                    <img src="profile.png" alt="Omer Gadalla" class="profile-photo">
+            <div class="about-flex">
+                <div class="profile-frame">
+                    <img src="profile.png" alt="Omer Gadalla">
                 </div>
                 <ul class="clean-list">
                     <li><strong>Education:</strong> B.Sc. Aerospace Engineering, Middle East Technical University (METU), 2021–2026.</li>
@@ -107,15 +107,15 @@
             <div class="flagship-wrapper">
                 <div style="text-align: center; margin-bottom: 4rem;">
                     <span class="role-tag">FLAGSHIP PROJECT</span>
-                    <h3 style="font-size: 2rem; color: white; margin-top: 10px;">100N Liquid Bipropellant Rocket Engine</h3>
-                    <p style="color: var(--text-muted);">From System Modeling to Additive Manufacturing</p>
+                    <h3 style="font-size: 2.5rem; color: white; margin-top: 15px; font-weight: 800;">100N Liquid Bipropellant Rocket Engine</h3>
+                    <p style="color: var(--text-muted); font-size: 1.1rem;">From System Modeling to Additive Manufacturing</p>
                 </div>
 
                 <div class="step-row">
                     <div class="step-content">
                         <span class="step-number">PHASE 01: SYSTEM MODELING</span>
                         <h3>Architecture & Logic.</h3>
-                        <p>Established propellant mass flow rates and sizing requirements using <strong>NASA CEA</strong> and <strong>MATLAB Simscape</strong> before CAD generation.</p>
+                        <p>We first did The NASA CEA then the simscape model of the design. This critical first step established our propellant mass flow rates and sizing requirements before any CAD geometry was generated.</p>
                         <span class="tech-tag">> NASA CEA / MATLAB Simscape</span>
                     </div>
                     <div class="step-img-container">
@@ -127,8 +127,8 @@
                     <div class="step-content">
                         <span class="step-number">PHASE 02: CFD SIMULATION</span>
                         <h3>Flow Validation.</h3>
-                        <p>Validated nozzle contour and shock locations using <strong>ANSYS Fluent</strong> (K-Epsilon Model) to prove flow physics before manufacturing.</p>
-                        <span class="tech-tag">> ANSYS Fluent</span>
+                        <p>Before manufacturing, we had to prove the flow physics. I ran <strong>a CFD</strong> simulation in ANSYS Fluent to validate our nozzle contour. The goal was to investigate the shock location and nozzle flow properties.</p>
+                        <span class="tech-tag">> ANSYS Fluent / K-Epsilon Model</span>
                     </div>
                     <div class="step-img-container">
                         <img src="nozzlecfd.png" alt="CFD Mach Contour" loading="lazy">
@@ -139,8 +139,8 @@
                     <div class="step-content">
                         <span class="step-number">PHASE 03: THERMAL STRATEGY</span>
                         <h3>Heat Sink Design.</h3>
-                        <p>Designed a <strong>Heat Sink / Capacitive</strong> cooling strategy using high-performance <strong>Inconel 718</strong> to absorb thermal loads during 10s burn.</p>
-                        <span class="tech-tag">> Transient Thermal Analysis</span>
+                        <p>A 10-second burn at 3000K generates immense thermal loads. We utilized a <strong>Heat Sink / Capacitive</strong> cooling strategy. We selected high-performance <strong>Inconel and Copper alloys</strong> capable of absorbing the thermal load for the full duration.</p>
+                        <span class="tech-tag">> Transient Thermal Analysis / Inconel 718</span>
                     </div>
                     <div class="step-img-container">
                         <img src="thermal.png" alt="Thermal Analysis" loading="lazy">
@@ -149,10 +149,10 @@
 
                 <div class="step-row reverse">
                     <div class="step-content">
-                        <span class="step-number">PHASE 04: MANUFACTURING</span>
-                        <h3>Additive Manufacturing.</h3>
-                        <p>Combustion chamber and injector manufactured via <strong>DMLS 3D Printing</strong> (Inconel 718) to achieve complex internal cooling channels.</p>
-                        <p style="font-size: 0.9rem; color: var(--tech-blue); margin-top: 1rem;">Propellants: GOX & Jet-A1</p>
+                        <span class="step-number">PHASE 04: ADDITIVE MANUFACTURING</span>
+                        <h3>Printed for Precision.</h3>
+                        <p>To achieve the complex internal geometries of the injector and cooling interfaces, we moved away from traditional CNC. The combustion chamber and injector were manufactured using <strong>Additive Manufacturing (3D Printing).</strong></p>
+                        <p style="font-size: 0.9rem; color: var(--tech-blue); margin-top: 1rem;">Propellants: Gaseous Oxygen (GOX) & Jet-A1</p>
                     </div>
                     <div class="dual-grid">
                         <div class="step-img-container"><img src="rocketengine.png" alt="Engine Assembly" loading="lazy"></div>
@@ -164,7 +164,7 @@
                     <div class="step-content">
                         <span class="step-number">PHASE 05: VALIDATION</span>
                         <h3>The Spray Test.</h3>
-                        <p>Conducted "Cold Flow" testing to verify injector atomization cone and impingement stability before hot fire.</p>
+                        <p>Before ignition, we verify fluid dynamics. We conducted a "Cold Flow" test to visualize the injector's atomization cone. This confirmed that our GOX/Fuel mixture would impinge correctly, ensuring stable combustion.</p>
                     </div>
                     <div class="step-img-container">
                         <img src="spreytest.png" alt="Spray Test" loading="lazy">
@@ -174,31 +174,33 @@
             
             <div style="margin-top: 6rem; margin-bottom: 3rem; border-top: 1px solid var(--border-color);"></div>
 
-            <h3 style="font-size: 1.5rem; color: white; margin-bottom: 2rem;">Additional Engineering Reports</h3>
+            <h3 style="font-size: 1.8rem; color: white; margin-bottom: 2rem; text-align:center;">Additional Technical Reports</h3>
 
-            <div class="project-card">
-                <div class="project-title-row">
-                    <h3>TEKNOFEST Liquid Bipropellant Rocket (A7)</h3>
-                    <span class="project-date">2026</span>
+            <div class="projects-grid-compact">
+                <div class="project-card">
+                    <div class="project-title-row">
+                        <h3>TEKNOFEST Liquid Bipropellant Rocket (A7)</h3>
+                        <span class="project-date">2026</span>
+                    </div>
+                    <p class="project-desc">Liquid bipropellant rocket targeting 1200 N.s impulse and 3000 ft apogee.</p>
+                    <div class="project-details">
+                        <p><strong>Role:</strong> Conducted external aerodynamic CFD and multidisciplinary aero-structural analyses.</p>
+                        <p><strong>Tools:</strong> Ansys Fluent, OpenFOAM, NASA CEA.</p>
+                        <p><strong>Output:</strong> Computed drag coefficients and aerodynamic loads for structural sizing.</p>
+                    </div>
                 </div>
-                <p class="project-desc">Liquid bipropellant rocket targeting 1200 N.s impulse and 3000 ft apogee.</p>
-                <div class="project-details">
-                    <p><strong>Role:</strong> Conducted external aerodynamic CFD and multidisciplinary aero-structural analyses.</p>
-                    <p><strong>Tools:</strong> Ansys Fluent, OpenFOAM, NASA CEA.</p>
-                    <p><strong>Output:</strong> Computed drag coefficients and aerodynamic loads for structural sizing.</p>
-                </div>
-            </div>
 
-            <div class="project-card">
-                <div class="project-title-row">
-                    <h3>20N Green Bipropellant Thruster</h3>
-                    <span class="project-date">Internship 2025</span>
-                </div>
-                <p class="project-desc">Conceptual design of a 20N green bipropellant thruster for small satellites.</p>
-                <div class="project-details">
-                    <p><strong>Role:</strong> Defined system architecture and operational concepts.</p>
-                    <p><strong>Tools:</strong> System Architecture Analysis, MATLAB.</p>
-                    <p><strong>Output:</strong> Proposed technical findings and assessed development risks to stakeholders.</p>
+                <div class="project-card">
+                    <div class="project-title-row">
+                        <h3>20N Green Bipropellant Thruster</h3>
+                        <span class="project-date">Internship 2025</span>
+                    </div>
+                    <p class="project-desc">Conceptual design of a 20N green bipropellant thruster for small satellites.</p>
+                    <div class="project-details">
+                        <p><strong>Role:</strong> Defined system architecture and operational concepts.</p>
+                        <p><strong>Tools:</strong> System Architecture Analysis, MATLAB.</p>
+                        <p><strong>Output:</strong> Proposed technical findings and assessed development risks to stakeholders.</p>
+                    </div>
                 </div>
             </div>
 
